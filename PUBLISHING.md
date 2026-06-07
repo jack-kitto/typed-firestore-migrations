@@ -16,7 +16,16 @@ In the repository **Settings → Pages**:
 
 The [`pages.yml`](.github/workflows/pages.yml) workflow deploys the static site from `docs/` on every push to `main`.
 
-### 3. npm access token
+### 3. GitHub Actions permissions
+
+In the repository **Settings → Actions → General → Workflow permissions**:
+
+- Select **Read and write permissions**
+- Enable **Allow GitHub Actions to create and approve pull requests** (optional; needed for some release plugins)
+
+The Release workflow also declares `contents: write` so semantic-release can push version tags and `@semantic-release/git` commits.
+
+### 4. npm access token
 
 1. Log in at [npmjs.com](https://www.npmjs.com/) as the account that will own both packages.
 2. Create an **Automation**-type access token (recommended for CI).
@@ -28,7 +37,7 @@ The [`pages.yml`](.github/workflows/pages.yml) workflow deploys the static site 
 
 `GITHUB_TOKEN` is provided automatically by Actions for GitHub Releases.
 
-### 4. First release
+### 5. First release
 
 Merge (or push) to `main` with a conventional commit subject, e.g.:
 

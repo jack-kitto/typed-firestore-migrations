@@ -93,6 +93,7 @@
     "ignores": [
       "create-typed-migration-app/template/**",
       "dist/**",
+      "examples/**",
       "test/fixtures/**"
     ]
   },

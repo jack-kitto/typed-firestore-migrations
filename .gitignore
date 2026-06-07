@@ -1,0 +1,21 @@
+node_modules/
+dist/
+create-typed-migration-app/template/
+*.tsbuildinfo
+
+# OS & editor
+.DS_Store
+.idea/
+.vscode/
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Coverage & logs
+coverage/
+*.log
+
+# npm
+.npm/

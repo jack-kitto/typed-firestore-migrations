@@ -1,0 +1,20 @@
+{
+  "name": "typed-firestore-migrations-example-orders",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "emulator": "tsx scripts/emulator.ts",
+    "seed": "tsx scripts/seed.ts",
+    "reset": "tsx scripts/reset.ts"
+  },
+  "dependencies": {
+    "@typed-firestore/server": "^2.3.1",
+    "firebase-admin": "^13.10.0",
+    "typed-firestore-migrations": "file:../.."
+  },
+  "devDependencies": {
+    "firebase-mocker": "^1.10.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
+}

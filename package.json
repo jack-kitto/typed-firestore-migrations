@@ -1,0 +1,102 @@
+{
+  "name": "typed-firestore-migrations",
+  "version": "0.0.0",
+  "description": "TypeScript-first Firestore data migrations for Node.js",
+  "type": "module",
+  "license": "MIT",
+  "author": "Jack Kitto <jack@kitto.sh>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jack-kitto/typed-firestore-migrations.git"
+  },
+  "homepage": "https://jack-kitto.github.io/typed-firestore-migrations/",
+  "bugs": {
+    "url": "https://github.com/jack-kitto/typed-firestore-migrations/issues"
+  },
+  "keywords": [
+    "firestore",
+    "firebase",
+    "migrations",
+    "typescript",
+    "umzug"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "workspaces": [
+    "examples/orders",
+    "create-typed-migration-app"
+  ],
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "bin": {
+    "firestore-migrate": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc && npm run build --workspace create-typed-migration-app",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "xo",
+    "typecheck": "tsc --noEmit",
+    "prepare": "husky",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@typed-firestore/server": ">=2.0.0",
+    "firebase-admin": ">=12.0.0"
+  },
+  "dependencies": {
+    "cac": "^7.0.0",
+    "jiti": "^2.4.2",
+    "umzug": "^3.8.3"
+  },
+  "devDependencies": {
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/npm": "^12.0.1",
+    "@typed-firestore/server": "^2.3.1",
+    "@types/node": "^25.9.2",
+    "firebase-admin": "^13.10.0",
+    "firebase-mocker": "^1.10.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.2",
+    "semantic-release": "^24.2.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4",
+    "xo": "^0.60.0"
+  },
+  "xo": {
+    "space": true,
+    "prettier": true,
+    "semicolon": true,
+    "rules": {
+      "@typescript-eslint/naming-convention": "off",
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "import/no-extraneous-dependencies": "off",
+      "n/prefer-global/process": "off",
+      "no-await-in-loop": "off",
+      "unicorn/no-await-expression-member": "off",
+      "unicorn/no-process-exit": "off",
+      "unicorn/prefer-top-level-await": "off",
+      "unicorn/prevent-abbreviations": "off"
+    },
+    "ignores": [
+      "create-typed-migration-app/template/**",
+      "dist/**",
+      "test/fixtures/**"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,js,mjs}": "xo --fix"
+  }
+}

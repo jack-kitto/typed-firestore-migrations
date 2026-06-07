@@ -1,0 +1,39 @@
+{
+  "name": "create-typed-migration-app",
+  "version": "0.0.0",
+  "description": "Scaffold a typed-firestore-migrations example host project",
+  "type": "module",
+  "license": "MIT",
+  "author": "Jack Kitto <jack@kitto.sh>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jack-kitto/typed-firestore-migrations.git",
+    "directory": "create-typed-migration-app"
+  },
+  "homepage": "https://jack-kitto.github.io/typed-firestore-migrations/",
+  "bugs": {
+    "url": "https://github.com/jack-kitto/typed-firestore-migrations/issues"
+  },
+  "keywords": [
+    "firestore",
+    "firebase",
+    "migrations",
+    "scaffold",
+    "create-app"
+  ],
+  "bin": {
+    "create-typed-migration-app": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "template"
+  ],
+  "scripts": {
+    "build": "node scripts/build-template.mjs && tsc",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.2",
+    "typescript": "^5.8.3"
+  }
+}

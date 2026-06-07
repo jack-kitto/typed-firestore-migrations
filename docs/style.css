@@ -1,0 +1,190 @@
+:root {
+  color-scheme: light dark;
+  --bg: #f6f6f4;
+  --fg: #171717;
+  --muted: #5c5c5c;
+  --accent: #e65100;
+  --accent-hover: #bf360c;
+  --surface: #ffffff;
+  --code-surface: #f0efec;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-link: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --radius-outer: 20px;
+  --radius-inner: 8px;
+  --radius-pill: 999px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f0f0f;
+    --fg: #f2f2f2;
+    --muted: #a3a3a3;
+    --accent: #ff9100;
+    --accent-hover: #ffb74d;
+    --surface: #1a1a1a;
+    --code-surface: #242424;
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35), 0 2px 8px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    --shadow-link: 0 1px 2px rgba(0, 0, 0, 0.4);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  line-height: 1.6;
+  color: var(--fg);
+  background: var(--bg);
+  text-wrap: pretty;
+}
+
+main {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 8vw, 4.5rem) 1.5rem 4rem;
+}
+
+.hero {
+  margin-bottom: 2.5rem;
+}
+
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.125rem);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.75rem;
+  text-wrap: balance;
+}
+
+.lead {
+  font-size: 1.0625rem;
+  color: var(--muted);
+  margin: 0;
+  max-width: 36em;
+}
+
+.block + .block {
+  margin-top: 2rem;
+}
+
+.label {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.card {
+  background: var(--surface);
+  border-radius: var(--radius-outer);
+  padding: 12px;
+  box-shadow: var(--shadow-md);
+}
+
+.card pre {
+  margin: 0;
+  padding: 0.875rem 1rem;
+  overflow-x: auto;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  background: var(--code-surface);
+  border-radius: var(--radius-inner);
+  box-shadow: var(--shadow-sm);
+}
+
+code {
+  font-family:
+    ui-monospace,
+    SFMono-Regular,
+    Menlo,
+    Monaco,
+    Consolas,
+    monospace;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin: 2rem 0;
+  padding: 0;
+}
+
+.links a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 1rem;
+  border-radius: var(--radius-pill);
+  background: var(--surface);
+  color: var(--accent);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--shadow-link);
+  transition-property: transform, box-shadow, color;
+  transition-duration: 0.15s;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+.links a:hover {
+  color: var(--accent-hover);
+  box-shadow: var(--shadow-sm);
+}
+
+.links a:active {
+  transform: scale(0.96);
+}
+
+footer {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  footer {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: 0.15s;
+  transition-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+footer a:hover {
+  color: var(--accent-hover);
+}
+
+footer strong {
+  color: var(--fg);
+  font-weight: 600;
+}

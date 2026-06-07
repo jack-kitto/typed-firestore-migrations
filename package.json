@@ -33,7 +33,7 @@
     "README.md"
   ],
   "bin": {
-    "firestore-migrate": "./dist/cli.js"
+    "firestore-migrate": "dist/cli.js"
   },
   "exports": {
     ".": {
@@ -48,7 +48,7 @@
     "lint": "xo",
     "typecheck": "tsc --noEmit",
     "prepare": "husky",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "tsc"
   },
   "peerDependencies": {
     "@typed-firestore/server": ">=2.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "create-typed-migration-app",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Scaffold a typed-firestore-migrations example host project",
   "type": "module",
   "license": "MIT",

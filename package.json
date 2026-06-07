@@ -1,6 +1,6 @@
 {
   "name": "typed-firestore-migrations",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "TypeScript-first Firestore data migrations for Node.js",
   "type": "module",
   "license": "MIT",

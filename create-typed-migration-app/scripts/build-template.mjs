@@ -14,7 +14,13 @@ const rootPackage = JSON.parse(
 
 await cp(sourceDir, templateDir, {
   recursive: true,
-  filter: (source) => !source.includes(`${path.sep}node_modules${path.sep}`),
+  filter(source) {
+    const nodeModulesDir = path.join(sourceDir, 'node_modules');
+    return (
+      source !== nodeModulesDir &&
+      !source.startsWith(`${nodeModulesDir}${path.sep}`)
+    );
+  },
 });
 
 const templatePackagePath = path.join(templateDir, 'package.json');

@@ -62,4 +62,38 @@ describe('create-typed-migration-app', () => {
       packageJson.dependencies['typed-firestore-migrations'],
     ).not.toContain('file:');
   });
+
+  it('scaffolds when the package lives under node_modules (npx install path)', async () => {
+    temporaryParent = await mkdtemp(
+      path.join(os.tmpdir(), 'tfm-scaffold-npx-'),
+    );
+    const fakePackageRoot = path.join(
+      temporaryParent,
+      'node_modules',
+      'create-typed-migration-app',
+    );
+    const {cp: copy} = await import('node:fs/promises');
+
+    await copy(
+      path.join(repoRoot, 'create-typed-migration-app/dist'),
+      path.join(fakePackageRoot, 'dist'),
+      {recursive: true},
+    );
+    await copy(
+      path.join(repoRoot, 'create-typed-migration-app/template'),
+      path.join(fakePackageRoot, 'template'),
+      {recursive: true},
+    );
+
+    const appDir = path.join(temporaryParent, 'my-sandbox');
+    const npxStyleEntry = path.join(fakePackageRoot, 'dist/index.js');
+    const result = spawnSync(process.execPath, [npxStyleEntry, appDir], {
+      cwd: temporaryParent,
+      encoding: 'utf8',
+    });
+
+    expect(result.status).toBe(0);
+    await access(path.join(appDir, 'package.json'));
+    await access(path.join(appDir, 'firestore-migrations.config.ts'));
+  });
 });

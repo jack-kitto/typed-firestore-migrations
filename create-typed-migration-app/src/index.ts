@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import {cp, mkdir, access} from 'node:fs/promises';
+import {access, cp, mkdir} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -31,11 +31,29 @@ try {
   // Directory does not exist — ok
 }
 
+const templateNodeModules = path.join(templateDir, 'node_modules');
+
+function shouldCopyTemplateEntry(source: string): boolean {
+  return (
+    source !== templateNodeModules &&
+    !source.startsWith(`${templateNodeModules}${path.sep}`)
+  );
+}
+
 await mkdir(targetDir, {recursive: true});
 await cp(templateDir, targetDir, {
   recursive: true,
-  filter: (source) => !source.includes(`${path.sep}node_modules${path.sep}`),
+  filter: shouldCopyTemplateEntry,
 });
+
+try {
+  await access(path.join(targetDir, 'package.json'));
+} catch {
+  console.error(
+    'Failed to scaffold project files. The template directory may be empty or unreadable.',
+  );
+  process.exit(1);
+}
 
 console.log(`Created typed-firestore-migrations example app at ${targetDir}`);
 console.log('');
